@@ -1,36 +1,35 @@
 import React, { useState } from "react";
+import './ProductForm.css'; 
 
 const ProductForm = (props) => {
   const [enterProductId, setProductId] = useState("");
   const [enterSellingPrice, setSellingPrice] = useState("");
   const [enterProductName, setProductName] = useState("");
-  const [enterCategory,setCategory]=useState("Electronics");
+  const [enterCategory, setCategory] = useState("Electronics");
 
   const productIdChangeHandler = (event) => {
     setProductId(event.target.value);
   };
 
-  const sellingPriceChangeHandler=(event)=>{
+  const sellingPriceChangeHandler = (event) => {
     setSellingPrice(event.target.value);
   };
 
-  const productNameChangeHandler=(event)=>{
+  const productNameChangeHandler = (event) => {
     setProductName(event.target.value);
-    
   };
 
-  const categoryChangeHandler=(event)=>{
+  const categoryChangeHandler = (event) => {
     setCategory(event.target.value);
   };
 
-  const addProductHandler=(event)=>{
+  const addProductHandler = (event) => {
     event.preventDefault();
-   props.onAddProduct(enterProductId,enterSellingPrice,enterProductName,enterCategory);
-  }
-
+    props.onAddProduct(enterProductId, enterSellingPrice, enterProductName, enterCategory);
+  };
 
   return (
-    <div>
+    <div className="product-form-container">
       <form onSubmit={addProductHandler}>
         <label htmlFor="ProductId">ProductId</label>
         <input
@@ -59,7 +58,7 @@ const ProductForm = (props) => {
           <option value="Food">Food</option>
           <option value="Skincare">Skincare</option>
         </select>
-        <button>Submit</button>
+        <button className="submit-button">Submit</button>
       </form>
     </div>
   );
